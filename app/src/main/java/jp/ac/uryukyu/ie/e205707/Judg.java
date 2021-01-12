@@ -36,6 +36,26 @@ public class Judg{
     }
 
     /**
+     * 「ー」を省き、小文字を大文字に変換する。
+     * @param word　入力された文字
+     * @return　しりとりに最適化された文字列
+     */
+    public String wordSet(String word){
+        word = word.replace("ゃ","や");
+        word = word.replace("ゅ","ゆ");
+        word = word.replace("ょ","よ");
+        word = word.replace("ぁ","あ");
+        word = word.replace("ぃ","い");
+        word = word.replace("ぅ","う");
+        word = word.replace("ぇ","え");
+        word = word.replace("ぉ","お");
+        if(word.substring(word.length()-1).equals("ー")){
+            word = word.substring(0,(word.length()-1));
+       }
+       return word;
+    }
+
+    /**
      * しりとりの文字が繋がっているかの判定。
      * 「ー」を省き、小文字を大文字に変換した文字列で考える。
      * @param befor　前の言葉
@@ -43,7 +63,7 @@ public class Judg{
      * @return　true(◯) or false(×)
      */
     public boolean wordConnect(String  befor, String after){
-        //befor = wordSet(befor);
+        befor = wordSet(befor);
         if(befor.charAt(befor.length() - 1 ) == after.charAt(0) ){
             return true;
         }else{ return false; }
