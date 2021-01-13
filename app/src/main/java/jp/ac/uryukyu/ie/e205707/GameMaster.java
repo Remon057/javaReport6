@@ -1,5 +1,8 @@
 package jp.ac.uryukyu.ie.e205707;
-
+/**
+ * ゲームを開始する
+ * ループを行い敗北者が現れた時にループを抜ける
+ */
 public class GameMaster {
     /**
      * ゲームを開始する。
@@ -15,7 +18,7 @@ public class GameMaster {
             if(!game.getResult()){ 
                 continue;
             }else{
-                computerAnswer = game.ComputerResult(playerAnswer);
+                computerAnswer = game.computerResult(playerAnswer);
             }   
         }
     }
