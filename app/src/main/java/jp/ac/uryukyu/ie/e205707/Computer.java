@@ -17,7 +17,7 @@ public class Computer {
      * @param judg 後の言葉
      * @return  コンピュータの出力
      */
-    public String computerAnswer(String befor , Judg judg){
+    public String computerAnswer(String befor , Judge judg){
         String answer = null;
         try{
             File file = new File("dictionary.txt");

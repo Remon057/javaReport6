@@ -12,7 +12,7 @@ public class GameMaster {
         GameResult game = new GameResult();
         String playerAnswer;
         String computerAnswer = startWord;
-        System.out.println("３文字しりとりだよ。\n全てひらがなで答えてね。\n最初は『"+computerAnswer+"』からスタートだよ!");
+        System.out.println("３文字しりとりだよ。\n全てひらがなで答えてね。\n最初は『"+computerAnswer+"』の『"+computerAnswer.charAt(computerAnswer.length() - 1)+"』から初めてね");
         while(game.getResult()){
             playerAnswer = game.playerResult(computerAnswer);
             if(!game.getResult()){ 

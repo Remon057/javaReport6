@@ -4,7 +4,7 @@ package jp.ac.uryukyu.ie.e205707;
  */
 class GameResult{
     private boolean result = true;
-    Judg ju = new Judg();
+    Judge ju = new Judge();
 
     /**
      * resultのゲッターメソッド
@@ -20,16 +20,16 @@ class GameResult{
      * @param befor　前の言葉
      * @return　答え
      */
-    public String playerResult(String befor){
+    public String playerResult(String before){
         Player player = new Player();
         String answer;
         while(true){
-            answer = player.input(befor);
+            answer = player.input();
             if(!ju.hiragana(answer)){
                 System.out.println("(^O^) 全部平仮名で入力してね");
                 continue;
-            }else if(!ju.wordConnect(befor, answer)){
-                System.out.println("((；ﾟДﾟ))『"+ju.wordSet(befor).charAt(befor.length() - 1)+"』から始まる言葉だよ");
+            }else if(!ju.wordConnect(before, answer)){
+                System.out.println("((；ﾟДﾟ))『"+ju.wordSet(before).charAt(before.length() - 1)+"』から始まる言葉だよ");
                 continue;
             }else if(!ju.wordCount(answer)){
                 System.out.println("(｀・ω・´)　３文字の言葉だよ");
@@ -40,7 +40,7 @@ class GameResult{
             }else{ break; }
         }
         if(!ju.loseWord(answer)){
-            System.out.println("(^.^) あなたの負け");
+            System.out.println("(^.^) 「ん」だよ〜　あなたの負け");
             result = false;
             return answer;
         }else{
@@ -53,12 +53,12 @@ class GameResult{
     /**
      * コンピュータに出力させて負け、続行を判定する。
      * resultに負けか続行を代入する：true(続行) or false(負け)
-     * @param befor　前の言葉
+     * @param before　前の言葉
      * @return　答え
      */
-    public String computerResult(String befor){
+    public String computerResult(String before){
         Computer computer = new Computer();
-        String answer = computer.computerAnswer(befor , ju);
+        String answer = computer.computerAnswer(before , ju);
         
         if(answer == null){
             System.out.println(">_<　ん〜思いつかない・・・参りました〜");
