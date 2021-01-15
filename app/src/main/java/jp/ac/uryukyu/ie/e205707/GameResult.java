@@ -22,29 +22,32 @@ class GameResult{
      */
     public String playerResult(String before){
         Player player = new Player();
+        before = ju.getHiragana(before);
         String answer;
+        String check;
         while(true){
             answer = player.input();
-            if(!ju.hiragana(answer)){
-                System.out.println("(^O^) 全部平仮名で入力してね");
+            check = ju.getHiragana(answer);
+            if(!ju.hiragana(check)){
+                System.out.println("(^O^) 全部平仮名かカタカナで入力してね");
                 continue;
-            }else if(!ju.wordConnect(before, answer)){
+            }else if(!ju.wordConnect(before, check)){
                 System.out.println("((；ﾟДﾟ))『"+ju.wordSet(before).charAt(before.length() - 1)+"』から始まる言葉だよ");
                 continue;
-            }else if(!ju.wordCount(answer)){
+            }else if(!ju.wordCount(check)){
                 System.out.println("(｀・ω・´)　３文字の言葉だよ");
                 continue;
-            }else if(!ju.usedWord(answer)){
+            }else if(!ju.usedWord(check)){
                 System.out.println("(｀∇´)　一度使われた言葉だよ");
                 continue;
             }else{ break; }
         }
-        if(!ju.loseWord(answer)){
+        if(!ju.loseWord(check)){
             System.out.println("(^.^) 「ん」だよ〜　あなたの負け");
             result = false;
             return answer;
         }else{
-            ju.addWord(answer);
+            ju.addWord(check);
             result = true;
             return answer;
         }   
@@ -58,6 +61,7 @@ class GameResult{
      */
     public String computerResult(String before){
         Computer computer = new Computer();
+        before = ju.getHiragana(before);
         String answer = computer.computerAnswer(before , ju);
         
         if(answer == null){
@@ -66,7 +70,7 @@ class GameResult{
             return answer;
         }else{
             System.out.println(answer);
-            ju.addWord(answer);
+            ju.addWord(ju.getHiragana(answer));
             result = true;
             return answer;
         }

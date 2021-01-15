@@ -99,4 +99,20 @@ public class Judge{
         return !usedWordList.contains(word);
     }
 
+    /**
+     * カタカナを平仮名にするメソッド
+     * @param word　入力された文字
+     * @return　平仮名に変換後の文字
+     */
+    public String getHiragana(String word){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < word.length(); i++){
+            char ch = word.charAt(i);
+            if(0x30A1 <= ch && ch <= 0x30F3){
+                ch -= 0x0060;
+            }
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
 }

@@ -24,8 +24,9 @@ public class Computer {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);   
             while((answer = bufferedReader.readLine()) != null){
-                if(judg.wordConnect(befor, answer)){
-                    if(judg.usedWord(answer)){
+                String check = judg.getHiragana(answer);
+                if(judg.wordConnect(befor, check)){
+                    if(judg.usedWord(check)){
                     break;
                     }
                 }
