@@ -1,9 +1,5 @@
 package jp.ac.uryukyu.ie.e205707;
 
-import java.util.concurrent.ArrayBlockingQueue;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -114,5 +110,18 @@ public class Judge{
             sb.append(ch);
         }
         return sb.toString();
+    }
+
+    /**
+     * 「降参」の判定
+     * @param word　入力された文字
+     * @return　true(降参) or false(降参以外)
+     */
+    public boolean loseWordkousann(String word){
+        if(word.equals("降参") || word.equals("こうさん")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

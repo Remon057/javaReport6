@@ -28,7 +28,11 @@ class GameResult{
         while(true){
             answer = player.input();
             check = ju.getHiragana(answer);
-            if(!ju.hiragana(check)){
+            if(ju.loseWordkousann(answer) || ju.loseWordkousann(check)){
+                System.out.println("(★｀・ω・)ゞﾗｼﾞｬ　\n降参しました、あなたの負けです");
+                check = "降参";
+                break;
+            }else if(!ju.hiragana(check)){
                 System.out.println("(^O^) 全部平仮名かカタカナで入力してね");
                 continue;
             }else if(!ju.wordConnect(before, check)){
@@ -42,7 +46,10 @@ class GameResult{
                 continue;
             }else{ break; }
         }
-        if(!ju.loseWord(check)){
+        if(ju.loseWordkousann(check)){
+            result = false;
+            return check;
+        }else if(!ju.loseWord(check)){
             System.out.println("(^.^) 「ん」だよ〜　あなたの負け");
             result = false;
             return answer;
